@@ -3,6 +3,14 @@
 #include <math.h>
 int main()
 {
+    printf("\n====Simple Calculator====\n");
+    printf("1.Addition(+)\n");
+    printf("2.Subtraction(-)\n");
+    printf("3.Multiplication(*)\n");
+    printf("4.Division(/)\n");
+    printf("5.Modulus(%)\n");
+
+    
     char operator = '\0';
     double first_number = 0.0f;
     double second_number = 0.0f;
