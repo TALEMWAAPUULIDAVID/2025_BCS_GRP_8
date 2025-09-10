@@ -31,9 +31,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="2025_BCS_GRP_8.H">
+		<Unit filename="calculator.c">
+			<Option compilerVar="CC" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="calculator.h.H" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
