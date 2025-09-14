@@ -87,7 +87,7 @@ int main()
             break;
         case 4:
             if (second_number == 0){
-                printf("Math Error\n");
+                printf("Division by zero is not allowed\n");
             }
             else{
                 result = divide(first_number, second_number);
