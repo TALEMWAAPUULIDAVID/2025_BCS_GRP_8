@@ -4,6 +4,10 @@
 #include "calculator.h.H"
 // Declaring of Global variable
 int result = 0;
+int ans = 0;
+char choice = 'y';
+int number = 0;
+char operation = '\0';
 
 
 // Function Methods
@@ -87,7 +91,7 @@ int main()
             break;
         case 4:
             if (second_number == 0){
-                printf("Math Error\n");
+                printf("Division by zero is not allowed\n");
             }
             else{
                 result = divide(first_number, second_number);
@@ -107,9 +111,73 @@ int main()
         default:
             printf("kindly try other operators\n");
 
+        return result;
+
     }
+    
+    //Continue with another calculation
+    
+    
 
+    while (choice == 'y' || choice == 'Y'){
+        printf("\nUse previous answer (ans = %d)? (y/n): ",result);
+        scanf(" %c", &choice);
 
+        if( choice =='y' || choice == 'Y'){
+            ans = result;
+            printf("Enter number: ");
+            scanf("%d", &number);
+            printf("Select operation : ");
+            scanf(" %c", &operation);
+
+            switch(operation){
+        case '+' :
+            result = sum(ans, number);
+            printf("Result = %d + %d= %d\n", ans, number, result);
+            break;
+        case '-':
+            result = sub(ans, number);
+            printf("Result = %d - %d= %d\n", ans, number, result);
+            break;
+        case '*':
+            result = mul(ans, number);
+            printf("Result = %d * %d= %d\n", ans, number, result);
+            break;
+        case '/':
+            if (number == 0){
+                printf("Division by zero is not allowed\n");
+            }
+            else{
+                result = divide(ans, number);
+
+                printf("Result = %d / %d= %d\n", ans, number, result);
+            }
+            break;
+        case '%':
+            if (number == 0)
+            {printf("Error:Division by zero is not allowed\n");
+        }
+        else{
+            result = mod(ans, number);
+            printf("Result = %d %% %d= %d\n", ans, number, result);
+        }
+        break;
+        default:
+            printf("kindly try other operations\n");
+
+        return result;
+
+        }
+        
+    
+    }
+    else{
+        printf("Thank you for using the simple calculator. We shall again\n");
+        break;
+    }
+    }
+    
+    
 
 
     return 0;
