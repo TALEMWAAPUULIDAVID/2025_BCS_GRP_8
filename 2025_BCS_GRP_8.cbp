@@ -35,7 +35,7 @@
 			<Option compilerVar="CC" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="calculator.h.H" />
+		<Unit filename="calculator.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
