@@ -1,21 +1,22 @@
 #include "calculator.h"
+#include <math.h>
 
-int sum(int x, int y) {
+float sum(float x, float y) {
     return x + y;
 }
 
-int sub(int x, int y) {
+float sub(float x, float y) {
     return x - y;
 }
 
-int mul(int x, int y) {
+float mul(float x, float y) {
     return x * y;
 }
 
-int divide(int x, int y) {
+float divide(float x, float y) {
     return x / y;
 }
 
-int mod(int x, int y) {
-    return x % y;
+float mod(float x, float y) {
+    return fmodf(x,y);
 }
