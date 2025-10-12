@@ -3,10 +3,10 @@
 #include <math.h>
 #include "calculator.h"
 // Declaring of Global variable
-int result = 0;
-int ans = 0;
-char choice = 'y';
-int number = 0;
+float result = 0.0f;
+float ans = 0.0f;
+char choice = '\0';
+float number = 0.0f;
 char operation = '\0';
 
 
@@ -48,29 +48,53 @@ int main()
     // Declaring of variables to be used in the simple calculator
 
     int operator = 0;
-    int first_number = 0;
-    int second_number = 0;
-    int result = 0;
+    float first_number = 0.0f;
+    float second_number = 0.0f;
+    float result = 0.0f;
 
     // Prompting the user to enter his/her data
+    while(1){
+        printf("Enter first number: ");
+        if(scanf("%f", &first_number)==1){ 
+            break;
+        }
+        else{
+            printf("Invalid input, Please enter digits\n");
+            while(getchar() != '\n');
 
-    printf("Enter first_number: ");
-    scanf("%d", &first_number);
+        }
+    }
+
+    while(1){
+        printf("Enter the second number: ");
+        if(scanf("%f",&second_number)==1){
+        break;
+    }
+        else{
+            printf("Invalid input,Please enter digits\n");
+            while(getchar() != '\n');
+        }
+    }
 
 
 
-    printf("Enter the second_number: ");
-    scanf("%d",&second_number);
-
-    printf("Enter the operation(1-Addition(+),2-Subtraction(-),3-Multiplication(*),4-Division(/),5-Modulus(%%)): ");
-    scanf(" %d", &operator);
+    while(1){
+        printf("Enter the operation(1-Addition(+),2-Subtraction(-),3-Multiplication(*),4-Division(/),5-Modulus(%%)): ");
+        if(scanf(" %d", &operator)==1){
+            break;
+        }
+        else{
+            printf("Invalid input,Please choose given numbers");
+            while(getchar() != '\n');
+        }
+    }
 
     //Displaying of the user input for confirmation
     printf("\nDear user, you have entered: \n");
 
-    printf("Enter first_number : %d\n", first_number);
+    printf("Enter first number : %.4f\n", first_number);
 
-    printf("Enter second_number : %d\n", second_number);
+    printf("Enter second number : %.4f\n", second_number);
 
     printf("Enter operation(1-5) : %d\n", operator);
 
@@ -80,24 +104,24 @@ int main()
     {
         case 1:
             result = sum(first_number, second_number);
-            printf("Result = %d + %d= %d\n", first_number, second_number, result);
+            printf("Result = %.4f + %.4f = %.4f\n", first_number, second_number, result);
             break;
         case 2:
             result = sub(first_number, second_number);
-            printf("Result = %d - %d= %d\n", first_number, second_number, result);
+            printf("Result = %.4f - %.4f = %.4f\n", first_number, second_number, result);
             break;
         case 3:
             result = mul(first_number, second_number);
-            printf("Result = %d * %d= %d\n", first_number, second_number, result);
+            printf("Result = %.4f * %.4f = %.4f\n", first_number, second_number, result);
             break;
         case 4:
-            if (second_number == 0){
+            if (second_number == 0.0f){
                 printf("Division by zero is not allowed\n");
             }
             else{
                 result = divide(first_number, second_number);
 
-                printf("Result = %d / %d= %d\n", first_number, second_number, result);
+                printf("Result = %.4f / %.4f = %.4f\n", first_number, second_number, result);
             }
             break;
         case 5:
@@ -106,7 +130,7 @@ int main()
         }
         else{
             result = mod(first_number, second_number);
-            printf("Result = %d %% %d= %d\n", first_number, second_number, result);
+            printf("Result = %.4f %% %.4f = %.4f\n", first_number, second_number, result);
         }
         break;
         default:
@@ -118,66 +142,88 @@ int main()
 
     //Continue with another calculation
 
-
-
-    while (choice == 'y' || choice == 'Y'){
-        printf("\nUse previous answer (ans = %d)? (y/n): ",result);
-        scanf(" %c", &choice);
-
-        if( choice =='y' || choice == 'Y'){
-            ans = result;
-            printf("Enter number: ");
-            scanf("%d", &number);
-            printf("Select operation : ");
-            scanf(" %c", &operation);
-
-            switch(operation){
-        case '+' :
-            result = sum(ans, number);
-            printf("Result = %d + %d= %d\n", ans, number, result);
-            break;
-        case '-':
-            result = sub(ans, number);
-            printf("Result = %d - %d= %d\n", ans, number, result);
-            break;
-        case '*':
-            result = mul(ans, number);
-            printf("Result = %d * %d= %d\n", ans, number, result);
-            break;
-        case '/':
-            if (number == 0){
-                printf("Division by zero is not allowed\n");
+    
+        while (1){
+            printf("\nUse previous answer (ans = %.4f)? (y/n): ",result);
+            if(scanf(" %c", &choice)==1 && (choice == 'y' || choice =='Y' )){
+                if(choice == 'y' || choice == 'Y'){
+                    ans = result;
+                    while (1){
+                        printf("Enter number: ");
+                        if(scanf("%f", &number)==1){
+                            break;
+                        }
+                        else{
+                            printf("Invalid input,please enter digits\n");
+                            while (getchar() != '\n');
+                    }
+                    }
+                    while (1) {
+                        printf("Select operation (+, -, *, /, %%): ");
+                        if (scanf(" %c", &operation) == 1 &&(operation == '+' || operation == '-' || operation == '*' ||operation == '/' || operation == '%')) {
+                            break;
+            } 
+                        else {
+                            printf("Invalid operation. Please enter one of +, -, *, /, %%\n");
+                            while (getchar() != '\n'); // clear input buffer
             }
+        }
+
+
+                    switch(operation){
+                case '+' :
+                    result = sum(ans, number);
+                    printf("Result = %.4f + %.4f = %.4f\n", ans, number, result);
+                    break;
+                case '-':
+                    result = sub(ans, number);
+                    printf("Result = %.4f - %.4f = %.4f\n", ans, number, result);
+                    break;
+                case '*':
+                    result = mul(ans, number);
+                    printf("Result = %.4f * %.4f = %.4f\n", ans, number, result);
+                    break;
+                case '/':
+                    if (number == 0.0f){
+                        printf("Division by zero is not allowed\n");
+                    }
+                    else{
+                        result = divide(ans, number);
+
+                        printf("Result = %.4f / %.4f = %.4f\n", ans, number, result);
+                    }
+                    break;
+                case '%':
+                    if (number == 0.0f)
+                    {printf("Error:Division by zero is not allowed\n");
+                }
+                else{
+                    result = mod(ans, number);
+                    printf("Result = %.4f %% %.4f = %.4f\n", ans, number, result);
+                }
+                break;
+                default:
+                    printf("kindly try other operations\n");
+
+                return result;
+
+                }
+
+            }
+            }
+
+            else if(choice == 'n' || choice =='N' ){
+                printf("Thank you for choosing the simple calculator, We shall again");
+                break;
+
+            }
+
             else{
-                result = divide(ans, number);
-
-                printf("Result = %d / %d= %d\n", ans, number, result);
+                printf("Invalid input, please enter 'y' or 'n'");
+                while(getchar() != '\n');
             }
-            break;
-        case '%':
-            if (number == 0)
-            {printf("Error:Division by zero is not allowed\n");
         }
-        else{
-            result = mod(ans, number);
-            printf("Result = %d %% %d= %d\n", ans, number, result);
-        }
-        break;
-        default:
-            printf("kindly try other operations\n");
-
-        return result;
-
-        }
-
-
-    }
-    else{
-        printf("Thank you for using the simple calculator. We shall again\n");
-        break;
-    }
-    }
-
+    
 
 
 
