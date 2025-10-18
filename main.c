@@ -80,11 +80,11 @@ int main()
 
     while(1){
         printf("Enter the operation(1-Addition(+),2-Subtraction(-),3-Multiplication(*),4-Division(/),5-Modulus(%%)): ");
-        if(scanf(" %d", &operator)==1){
+        if(scanf(" %d", &operator)==1 && (operator >= 1 && operator <= 5)){
             break;
         }
         else{
-            printf("Invalid input,Please choose given numbers");
+            printf("Invalid input,Please choose given numbers\n");
             while(getchar() != '\n');
         }
     }
