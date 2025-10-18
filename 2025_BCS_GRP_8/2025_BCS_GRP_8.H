@@ -1,6 +1,0 @@
-#ifndef 2025_BCS_GRP_8_h_INCLUDED
-#define 2025_BCS_GRP_8_h_INCLUDED
-
-
-
-#endif // 2025_BCS_GRP_8_h_INCLUDED
