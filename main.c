@@ -52,22 +52,27 @@ int main()
     float second_number = 0.0f;
     float result = 0.0f;
 
-    // Prompting the user to enter his/her data
+    // Prompting the user to enter first number
     while(1){
         printf("Enter first number: ");
-        if(scanf("%f", &first_number)==1){ 
+        if(scanf("%f", &first_number)==1 ){ 
+            while(getchar() != '\n');
             break;
         }
+        
+        
         else{
             printf("Invalid input, Please enter digits\n");
             while(getchar() != '\n');
 
         }
     }
-
+    
+    //Prompting user to enter second number
     while(1){
         printf("Enter the second number: ");
         if(scanf("%f",&second_number)==1){
+        while(getchar() != '\n');
         break;
     }
         else{
@@ -77,10 +82,12 @@ int main()
     }
 
 
-
+    
+    // Prompting user to choose operator
     while(1){
         printf("Enter the operation(1-Addition(+),2-Subtraction(-),3-Multiplication(*),4-Division(/),5-Modulus(%%)): ");
         if(scanf(" %d", &operator)==1 && (operator >= 1 && operator <= 5)){
+            while(getchar() != '\n');
             break;
         }
         else{
@@ -88,7 +95,7 @@ int main()
             while(getchar() != '\n');
         }
     }
-
+    
     //Displaying of the user input for confirmation
     printf("\nDear user, you have entered: \n");
 
@@ -100,21 +107,23 @@ int main()
 
     // Performing of calculations according to opertaor chosen by user by switch case
 
+    
     switch(operator)
     {
-        case 1:
+        
+        case 1:                   // Addition
             result = sum(first_number, second_number);
             printf("Result = %.4f + %.4f = %.4f\n", first_number, second_number, result);
             break;
-        case 2:
+        case 2:              // Subtraction
             result = sub(first_number, second_number);
             printf("Result = %.4f - %.4f = %.4f\n", first_number, second_number, result);
             break;
-        case 3:
+        case 3:            // Multiplication
             result = mul(first_number, second_number);
             printf("Result = %.4f * %.4f = %.4f\n", first_number, second_number, result);
             break;
-        case 4:
+        case 4:              // Division
             if (second_number == 0.0f){
                 printf("Division by zero is not allowed\n");
             }
@@ -124,7 +133,7 @@ int main()
                 printf("Result = %.4f / %.4f = %.4f\n", first_number, second_number, result);
             }
             break;
-        case 5:
+        case 5:              // Modulus
             if (second_number == 0)
             {printf("Error:Division by zero is not allowed\n");
         }
@@ -140,9 +149,9 @@ int main()
 
     }
 
-    //Continue with another calculation
+    //Continue with previous result for calculation 
 
-    
+        
         while (1){
             printf("\nUse previous answer (ans = %.4f)? (y/n): ",result);
             if(scanf(" %c", &choice)==1 && (choice == 'y' || choice =='Y' )){
@@ -151,16 +160,20 @@ int main()
                     while (1){
                         printf("Enter number: ");
                         if(scanf("%f", &number)==1){
+                            while (getchar() != '\n');
                             break;
                         }
                         else{
                             printf("Invalid input,please enter digits\n");
                             while (getchar() != '\n');
                     }
+                    
                     }
                     while (1) {
+                        
                         printf("Select operation (+, -, *, /, %%): ");
                         if (scanf(" %c", &operation) == 1 &&(operation == '+' || operation == '-' || operation == '*' ||operation == '/' || operation == '%')) {
+                            while (getchar() != '\n');
                             break;
             } 
                         else {
@@ -168,7 +181,15 @@ int main()
                             while (getchar() != '\n'); // clear input buffer
             }
         }
+                                
+                                //Displaying of the user input for confirmation
+                    printf("\nDear user, you have entered: \n");
 
+                    printf("Previous result : %.4f\n", ans);
+
+                    printf("Enter number : %.4f\n", number);
+
+                    printf("Enter operation: %c\n", operation);
 
                     switch(operation){
                 case '+' :
