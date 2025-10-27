@@ -10,28 +10,7 @@ float number = 0.0f;
 char operation = '\0';
 
 
-// Function Methods
 
-/*int sum (int x, int y){
-    result = x + y;
-    return result;
-}
-int sub (int x , int y){
-    result = x - y ;
-    return result;
-}
-int mul (int x , int y){
-    result = x * y ;
-    return result;
-}
-int divide (int x , int y){
-    result = x / y ;
-    return result;
-}
-int mod (int x , int y){
-    result = x % y ;
-    return result;
-}*/
 
 int main()
 {
@@ -157,6 +136,7 @@ int main()
             if(scanf(" %c", &choice)==1 && (choice == 'y' || choice =='Y' )){
                 if(choice == 'y' || choice == 'Y'){
                     ans = result;
+                    while (getchar() != '\n');
                     while (1){
                         printf("Enter number: ");
                         if(scanf("%f", &number)==1){
